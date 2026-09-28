@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Form Data Mahasiswa</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#f5f5f5; }
+  .form-box {
+    width: 400px;
+    margin: 30px auto;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+  h2 { margin-top: 0; }
+  .row { margin-bottom: 12px; display: flex; align-items: flex-start; }
+  .row label { width: 160px; flex-shrink: 0; }
+  .row input[type=text], .row input[type=date], .row textarea, .row select {
+    flex: 1;
+  }
+  textarea { resize: vertical; }
+  .radio-group span, .checkbox-group label { margin-right: 12px; }
+  .checkbox-group { display: flex; flex-direction: column; }
+  .buttons { margin-top: 15px; }
+  .buttons button { padding: 5px 15px; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Data Mahasiswa Telkom University Surabaya</h2>
+  <form id="formMahasiswa">
+
+    <div class="row">
+      <label for="nim">NIM :</label>
+      <input type="text" id="nim" name="nim" required>
+    </div>
+
+    <div class="row">
+      <label for="nama">Nama :</label>
+      <input type="text" id="nama" name="nama" required>
+    </div>
+
+    <div class="row">
+      <label for="tgllahir">Tgl Lahir (dd-mm-yyyy) :</label>
+      <input type="date" id="tgllahir" name="tgllahir" required>
+    </div>
+
+    <div class="row">
+      <label>Jenis Kelamin :</label>
+      <div class="radio-group">
+        <span><input type="radio" name="kelamin" value="Laki-Laki" required> Laki-Laki</span>
+        <span><input type="radio" name="kelamin" value="Perempuan"> Perempuan</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <label for="alamat">Alamat di Bandung :</label>
+      <textarea id="alamat" name="alamat" rows="3" required></textarea>
+    </div>
+
+    <div class="row">
+      <label for="tinggal">Tinggal di :</label>
+      <select id="tinggal" name="tinggal" required>
+        <option value="">--pilih--</option>
+        <option value="Kos/Kontrakan">Kos/Kontrakan</option>
+        <option value="Rumah saudara">Rumah saudara</option>
+        <option value="Rumah orang tua">Rumah orang tua</option>
+      </select>
+    </div>
+
+    <div class="row">
+      <label>Pilih 2 hobi yang paling disukai :</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="hobi" value="Science"> Science</label>
+        <label><input type="checkbox" name="hobi" value="Technology"> Technology</label>
+        <label><input type="checkbox" name="hobi" value="Art"> Art</label>
+        <label><input type="checkbox" name="hobi" value="Sport"> Sport</label>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </div>
+
+  </form>
+</div>
+
+<script>
+document.getElementById('formMahasiswa').addEventListener('submit', function(e) {
+  var checked = document.querySelectorAll('input[name="hobi"]:checked');
+  if (checked.length !== 2) {
+    e.preventDefault();
+    alert('Silakan pilih tepat 2 hobi yang paling disukai.');
+  }
+});
+</script>
+
+</body>
+</html>
